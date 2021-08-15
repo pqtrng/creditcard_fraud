@@ -1,7 +1,9 @@
 .PHONY: help clean clean-pyc clean-build list test test-all coverage docs release sdist
 
+PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PROJECT_NAME = creditcard_fraud
 PYTHON_INTERPRETER = python3
+DATA_URL = "https://www.kaggle.com/mlg-ulb/creditcardfraud/download"
 
 help:
 	@echo "clean - remove build artifacts"
@@ -46,3 +48,8 @@ test: develop lint
 run: clean
 	@echo "Train and evaluate model"
 	$(PYTHON_INTERPRETER) src/main.py
+
+data: clean
+	$(PYTHON_INTERPRETER) src/data/download.py $(DATASET_URL) data/raw/data.zip
+	$(PYTHON_INTERPRETER) src/data/extract.py raw raw
+	find . -type f -name "*.zip" -delete
