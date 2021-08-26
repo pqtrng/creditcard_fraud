@@ -26,6 +26,7 @@ setup-git: install-pre-commit
 	git config branch.autosetuprebase always
 
 install-deps:
+	pip install --upgrade pip
 	pip install -U pip setuptools wheel
 	pip install -r requirements/requirements.txt
 	pip install -r requirements/test-requirements.txt
@@ -50,6 +51,4 @@ run: clean
 	$(PYTHON_INTERPRETER) src/main.py
 
 data: clean
-	$(PYTHON_INTERPRETER) src/data/download.py $(DATASET_URL) data/raw/data.zip
-	$(PYTHON_INTERPRETER) src/data/extract.py raw raw
-	find . -type f -name "*.zip" -delete
+	$(PYTHON_INTERPRETER) src/download_data.py
