@@ -1,0 +1,30 @@
+---
+project:
+    name: 'Credit Card Fraud Detection'
+    model: 'Classifier'
+data:
+    data_path: 'data'
+    file_name: 'creditcard.csv'
+    test_size: 0.2
+    seed: 45
+
+model:
+
+
+
+visualization:
+    image:
+        axis_fs: 18
+        title_fs: 22
+        style: "whitegrid"
+        dpi: 120
+        x_size: [1, 10]
+        y_size: [1, 10]
+        color: 'black'
+        line_width: 1
+        limit_bottom: 2.5
+        limit_top: 8.5
+
+defaults:
+    - override hydra/job_logging: colorlog
+    - override hydra/hydra_logging: colorlog
