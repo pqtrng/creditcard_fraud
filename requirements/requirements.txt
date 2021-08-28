@@ -1,0 +1,10 @@
+-e .
+black
+hydra-core
+hydra_colorlog
+matplotlib
+numpy
+pandas
+requests
+seaborn
+sklearn
